@@ -2,8 +2,8 @@
 
 using namespace std;
 
-string elements = "abcdefghijklmnopqrstuvwxyz@!#%$&*()_+=-123456789";
-string elems = "abcdefghijklmnopqrstuvwxyz!#%$&*()_+=-123456789";
+string elements = "abcdefghijklmnopqrstuvwxyz@!#%$&*_+=-123456789";
+string elems = "abcdefghijklmnopqrstuvwxyz!#%$&*_+=-123456789";
 string name = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 string nums = "123456789";
 
@@ -59,17 +59,19 @@ string generate_Mail()
 int main()
 {
     srand(time(NULL));
-    string mail,user,password;
+    string mail,user,password,server;
     int n;
     ofstream file;
     file.open("lista.txt");
     cout<<"How many accounts?"<<endl;
     cin>>n;
+    cout<<"What server?"<<endl;
+    cin>>server;
     for(int i=0;i<n;i++)
     {
        password = generate_Password();
        user = generate_User();
-       file << "EUW:" << user <<":"<<password<<"\n";
+       file << server << ":" << user <<":"<<password<<"\n";
     }
     file << "\n";
     for(int i=0; i<n; i++)
